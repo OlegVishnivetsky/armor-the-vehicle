@@ -6,6 +6,7 @@ using _Project._Code.Features.Camera;
 using _Project._Code.Features.Level;
 using _Project._Code.Features.UI.Panels;
 using _Project._Code.Features.Vehicle;
+using _Project._Code.Services.Audio;
 using _Project._Code.Services.Input;
 using _Project._Code.Services.Vfx;
 using Cysharp.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace _Project._Code.Core.States
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IInputService _inputService;
         private readonly IVfxService _vfxService;
+        private readonly ISoundService _soundService;
         private readonly VictoryPanel _victoryPanel;
         private readonly LevelContext _levelContext;
         private readonly CameraDirector _cameraDirector;
@@ -31,6 +33,7 @@ namespace _Project._Code.Core.States
             IGameStateMachine gameStateMachine, 
             IInputService inputService,
             IVfxService vfxService,
+            ISoundService soundService,
             VictoryPanel victoryPanel,
             LevelContext levelContext,
             CameraDirector cameraDirector)
@@ -38,6 +41,7 @@ namespace _Project._Code.Core.States
             _gameStateMachine = gameStateMachine;
             _inputService = inputService;
             _vfxService = vfxService;
+            _soundService = soundService;
             _victoryPanel = victoryPanel;
             _levelContext = levelContext;
             _cameraDirector = cameraDirector;
@@ -51,6 +55,7 @@ namespace _Project._Code.Core.States
             
             Car car = _levelContext.Car;
             _vfxService.PlayVfx(Constants.Vfx.Confetti, car.transform.position);
+            _soundService.PlaySound(Constants.Sounds.Victory);
             
             PlayVictoryAsync().Forget();
         }

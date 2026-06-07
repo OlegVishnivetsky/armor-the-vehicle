@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbf383723334dcaac1e29e46a3a137f, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::_Project._Code.Services.Audio.AudioConfig
+  Sounds:
+  - Name: CarDeath
+    Clip: {fileID: 8300000, guid: 280c81751a7858a42970d4ff5ab3ab09, type: 3}
+    Volume: 0.784
+    PitchRandom: 0
+  - Name: EnemyDeath
+    Clip: {fileID: 8300000, guid: c4fac6513e9612e44a3e4f0b8c3031ec, type: 3}
+    Volume: 0.805
+    PitchRandom: 0.1
+  - Name: Lose
+    Clip: {fileID: 8300000, guid: 6f8bd208ff81349498fdc7b80b7d34a4, type: 3}
+    Volume: 0.75
+    PitchRandom: 0
+  - Name: Victory
+    Clip: {fileID: 8300000, guid: 8f99e4608ee4fdb4482a53655b79f7ce, type: 3}
+    Volume: 0.7
+    PitchRandom: 0
+  - Name: Shoot
+    Clip: {fileID: 8300000, guid: c1243a0cd23737649956d154246f7e1d, type: 3}
+    Volume: 0.7
+    PitchRandom: 0.1

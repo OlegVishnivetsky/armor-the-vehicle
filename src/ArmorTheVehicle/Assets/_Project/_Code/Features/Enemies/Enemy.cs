@@ -4,6 +4,7 @@ using _Project._Code.Features.Combat;
 using _Project._Code.Features.Feedback;
 using _Project._Code.Features.Level;
 using _Project._Code.Features.Movement;
+using _Project._Code.Services.Audio;
 using _Project._Code.Services.Vfx;
 using MoreMountains.Feedbacks;
 using R3;
@@ -25,6 +26,7 @@ namespace _Project._Code.Features.Enemies
         private Health _health;
         private GlobalFeedbackPlayer _feedbackPlayer;
         private IVfxService _vfxService;
+        private ISoundService _soundService;
         private Transform _target;
 
         private float _speed;
@@ -41,12 +43,14 @@ namespace _Project._Code.Features.Enemies
             Mover mover,
             Health health,
             GlobalFeedbackPlayer feedbackPlayer,
-            IVfxService vfxService)
+            IVfxService vfxService,
+            ISoundService soundService)
         {
             _mover = mover;
             _health = health;
             _feedbackPlayer = feedbackPlayer;
             _vfxService = vfxService;
+            _soundService = soundService;
         }
 
         private void Awake() => _rigidbody = GetComponent<Rigidbody>();
@@ -150,6 +154,8 @@ namespace _Project._Code.Features.Enemies
             _feedbackPlayer.PlayFeedback(FeedbackType.Kill);
             _vfxService.PlayVfx(Constants.Vfx.BigHit, new(transform.position.x, 
                 transform.position.y + 1.5f, transform.position.z));
+            _soundService.PlaySound(Constants.Sounds.EnemyDeath);
+            
             Died?.Invoke(this);
         }
     }

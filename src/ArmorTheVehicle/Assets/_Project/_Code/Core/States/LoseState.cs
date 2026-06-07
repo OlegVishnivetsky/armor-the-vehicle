@@ -7,6 +7,7 @@ using _Project._Code.Core.StateMachine.State;
 using _Project._Code.Features.Level;
 using _Project._Code.Features.UI.Panels;
 using _Project._Code.Features.Vehicle;
+using _Project._Code.Services.Audio;
 using _Project._Code.Services.Input;
 using _Project._Code.Services.Vfx;
 
@@ -17,6 +18,7 @@ namespace _Project._Code.Core.States
         private readonly IGameStateMachine _stateMachine;
         private readonly IInputService _inputService;
         private readonly IVfxService _vfxService;
+        private readonly ISoundService _soundService;
         private readonly LevelContext _levelContext;
         private readonly LosePanel _losePanel;
 
@@ -28,12 +30,14 @@ namespace _Project._Code.Core.States
             IGameStateMachine stateMachine,
             IInputService inputService,
             IVfxService vfxService,
+            ISoundService soundService,
             LevelContext levelContext,
             LosePanel losePanel)
         {
             _stateMachine = stateMachine;
             _inputService = inputService;
             _vfxService = vfxService;
+            _soundService = soundService;
             _levelContext = levelContext;
             _losePanel = losePanel;
         }
@@ -47,6 +51,7 @@ namespace _Project._Code.Core.States
             car.PlayDeath();
             
             _vfxService.PlayVfx(Constants.Vfx.Explosion, car.transform.position);
+            _soundService.PlaySound(Constants.Sounds.Lose);
 
             PlayLoseAsync().Forget();
         }

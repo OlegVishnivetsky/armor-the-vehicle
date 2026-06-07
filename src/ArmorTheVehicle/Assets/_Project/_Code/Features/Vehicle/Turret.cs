@@ -1,4 +1,6 @@
+using _Project._Code.Core;
 using _Project._Code.Features.Combat;
+using _Project._Code.Services.Audio;
 using _Project._Code.Services.Input;
 using Lean.Pool;
 using MoreMountains.Feedbacks;
@@ -14,6 +16,7 @@ namespace _Project._Code.Features.Vehicle
         [SerializeField] private Transform _shootPoint;
         
         private IInputService _inputService;
+        private ISoundService _soundService;
         private Bullet _bulletPrefab;
 
         private float _bulletSpeed;
@@ -34,7 +37,11 @@ namespace _Project._Code.Features.Vehicle
         private float _fireCooldown;
 
         [Inject]
-        public void Construct(IInputService inputService) => _inputService = inputService;
+        public void Construct(IInputService inputService, ISoundService soundService)
+        {
+            _inputService = inputService;
+            _soundService = soundService;
+        }
 
         private void Update()
         {
@@ -92,6 +99,7 @@ namespace _Project._Code.Features.Vehicle
             bullet.Launch(_shootPoint.forward, _bulletSpeed, _bulletDamage, _bulletLifetime);
             
             _scaleFeedback.BumpRandom();
+            _soundService.PlaySound(Constants.Sounds.Shoot);
         }
     }
 }

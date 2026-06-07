@@ -20,7 +20,7 @@ namespace _Project._Code.Services.Audio
 
         public void PlaySound(string name)
         {
-            if (_source == null)
+            if (!_source)
                 CreateSource();
 
             if (!_soundClips.TryGetValue(name, out AudioClipData data))
@@ -29,9 +29,7 @@ namespace _Project._Code.Services.Audio
                 return;
             }
 
-            float pitch = data.PitchRandom <= 0f
-                ? 1f
-                : 1f + Random.Range(-data.PitchRandom, data.PitchRandom);
+            float pitch = data.PitchRandom <= 0f ? 1f : 1f + Random.Range(-data.PitchRandom, data.PitchRandom);
 
             _source.pitch = pitch;
             _source.PlayOneShot(data.Clip, data.Volume);

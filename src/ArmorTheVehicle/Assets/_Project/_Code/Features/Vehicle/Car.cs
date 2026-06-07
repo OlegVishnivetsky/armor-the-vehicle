@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using _Project._Code.Core;
 using _Project._Code.Features.Combat;
 using _Project._Code.Features.Feedback;
 using _Project._Code.Features.Movement;
 using _Project._Code.Features.UI.HealthBar;
+using _Project._Code.Services.Audio;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 using VContainer;
@@ -27,6 +29,7 @@ namespace _Project._Code.Features.Vehicle
         private Health _health;
         private WheelDriver _wheelDriver;
         private GlobalFeedbackPlayer _feedbackPlayer;
+        private ISoundService _soundService;
         
         private float _speed;
         private bool _moving;
@@ -34,11 +37,16 @@ namespace _Project._Code.Features.Vehicle
         public Health Health => _health;
 
         [Inject]
-        public void Construct(Mover mover, Health health, GlobalFeedbackPlayer feedbackPlayer)
+        public void Construct(
+            Mover mover,
+            Health health,
+            GlobalFeedbackPlayer feedbackPlayer,
+            ISoundService soundService)
         {
             _mover = mover;
             _health = health;
             _feedbackPlayer = feedbackPlayer;
+            _soundService = soundService;
         }
         
         private void Awake() => _rigidbody = GetComponent<Rigidbody>();
@@ -86,6 +94,7 @@ namespace _Project._Code.Features.Vehicle
         {
             _deathFeedback.PlayFeedbacks();
             _feedbackPlayer.PlayFeedback(FeedbackType.Death);
+            _soundService.PlaySound(Constants.Sounds.CarDeath);
         }
 
         public void TakeDamage(float amount)
