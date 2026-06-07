@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eb7e9fdf9048fcafbf3d13717b37c8, type: 3}
+  m_Name: CarConfig
+  m_EditorClassIdentifier: Assembly-CSharp::_Project._Code.Features.Vehicle.CarConfig
+  CarPrefab: {fileID: 7322061424216837122, guid: c7bee4321b01bc441bb5da9111754200, type: 3}
+  MaxHealth: 100
+  Speed: 8
+  WheelRadius: 0.2
+  Sensitivity: 0.15
+  SmoothTime: 0.08
+  MinAngle: -90
+  MaxAngle: 90
+  BulletPrefab: {fileID: 2259094756049776432, guid: 40de0ba087603b94d9a5c09cfde5cfb6, type: 3}
+  BulletSpeed: 45
+  BulletDamage: 15
+  BulletLifetime: 3
+  FireInterval: 0.25

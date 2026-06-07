@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f306c51f7bda8e846b084bebd402317b, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: Assembly-CSharp::_Project._Code.Features.Level.LevelConfig
+  LevelPrefab: {fileID: 6362137747866450809, guid: a5826f692ea9a5b47ae2629758bb2041, type: 3}
+  EnemyMaxHealth: 30
+  EnemySpeed: 5
+  EnemyTriggerRange: 12
+  EnemyDamageToCar: 5
